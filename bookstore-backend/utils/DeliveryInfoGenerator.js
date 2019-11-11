@@ -25,7 +25,8 @@ export default class DeliveryInfoGeneratorFactory {
 }
 
 class DeliveryInfoGenerator {
-    constructor(cost) {
+    constructor(deliveryService, cost) {
+        this.deliveryService = deliveryService
         this.cost = cost;
     }
 
@@ -46,7 +47,7 @@ class DeliveryInfoGenerator {
 
 class MotobikeDeliveryInfoGenerator extends DeliveryInfoGenerator {
     constructor(cost) {
-        super(cost);
+        super(DELIVERY_SERVICES.MOTOBIKE, cost);
     }
 
     generateInfo() {
@@ -54,6 +55,7 @@ class MotobikeDeliveryInfoGenerator extends DeliveryInfoGenerator {
             driverName: this.generateDriverName(),
             mobilePhone: this.generateMobilePhone(),
             deliveryDate: this.generateRandomDate(),
+            deliveryService: this.deliveryService,
             cost: this.cost
         }
     }
@@ -71,7 +73,7 @@ class MotobikeDeliveryInfoGenerator extends DeliveryInfoGenerator {
 
 class TrainDeliveryInfoGenerator extends DeliveryInfoGenerator {
     constructor(cost) {
-        super(cost);
+        super(DELIVERY_SERVICES.TRAIN, cost);
     }
 
     generateInfo() {
@@ -79,6 +81,7 @@ class TrainDeliveryInfoGenerator extends DeliveryInfoGenerator {
             trainNo: this.generateTrainNo(),
             stationOfArrival: this.generateStationName(),
             dateOfArrival: this.generateRandomDate(),
+            deliveryService: this.deliveryService,
             cost: this.cost
         }
     }
@@ -96,7 +99,7 @@ class TrainDeliveryInfoGenerator extends DeliveryInfoGenerator {
 
 class AircraftDeliveryInfoGenerator extends DeliveryInfoGenerator {
     constructor(cost) {
-        super(cost);
+        super(DELIVERY_SERVICES.AIRCRAFT, cost);
     }
 
     generateInfo() {
@@ -104,6 +107,7 @@ class AircraftDeliveryInfoGenerator extends DeliveryInfoGenerator {
             flightNo: this.generateFlightNo(),
             gateOfArrival: this.generateGate(),
             dateOfArrival: this.generateRandomDate(),
+            deliveryService: this.deliveryService,
             cost: this.cost
         }
     }
