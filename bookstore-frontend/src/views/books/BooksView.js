@@ -91,8 +91,7 @@ export default {
 
         onBuyBook({ book, deliveryService}) {
             console.log('deliveryService', this.deliveryService)
-            // let buyBookModel = new BuyBookModel(deliveryService, this.deliveryCosts[deliveryService])
-            let buyBookModel = new BuyBookModel('M', this.deliveryCosts['M'])
+            let buyBookModel = new BuyBookModel(deliveryService, this.deliveryCosts[deliveryService])
             this.buyBook(buyBookModel)
                 .then(res => {
                     // Close popup

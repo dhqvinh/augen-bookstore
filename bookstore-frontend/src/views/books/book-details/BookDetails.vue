@@ -9,15 +9,15 @@
         <div class="row ship-label-wrap">
             <label>Ship via</label>
         </div>
-        <div v-if="this.deliveryCosts" class="btn-group mt-2" data-toggle="buttons">
+        <div v-if="this.deliveryCosts" class="btn-group mt-2">
             <label class="btn btn-success active">
-                <input v-model="deliveryService" type="radio" id="dm" name="deliveryServices" value="M" autocomplete="off" checked> MOTOBIKE ${{motobikeDeliveryCost}}
+                <input v-model="deliveryService" type="radio" name="deliveryServices" value="M" checked> MOTOBIKE ${{motobikeDeliveryCost}}
             </label>
             <label class="btn btn-primary ml-4">
-                <input v-model="deliveryService" type="radio" id="dt" name="deliveryServices" value="T" autocomplete="off"> TRAIN ${{trainDeliveryCost}}
+                <input v-model="deliveryService" type="radio" name="deliveryServices" value="T"> TRAIN ${{trainDeliveryCost}}
             </label>
             <label class="btn btn-warning ml-4">
-                <input v-model="deliveryService" type="radio" id="da" name="deliveryServices" value="A" autocomplete="off"> AIRCRAFT ${{aircraftDeliveryCost}}
+                <input v-model="deliveryService" type="radio" name="deliveryServices" value="A"> AIRCRAFT ${{aircraftDeliveryCost}}
             </label>
         </div>
         <div class="row justify-content-center mt-5">
@@ -56,12 +56,6 @@ export default {
     data() {
         return {
             deliveryService: DELIVERY_SERVICES.MOTOBIKE
-        }
-    },
-
-    watch: {
-        deliveryService(value) {
-            console.log('deliveryService: ', value)
         }
     },
 
