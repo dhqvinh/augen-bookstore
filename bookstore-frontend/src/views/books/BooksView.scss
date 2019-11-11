@@ -1,0 +1,18 @@
+.container {
+  &.main {
+    border: 1px solid #eee;
+    padding: 15px;
+  }
+
+  .search-form {
+  }
+
+  .search-result {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .book-item.clickable {
+    cursor: pointer;
+  }
+}
