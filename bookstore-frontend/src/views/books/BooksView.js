@@ -4,6 +4,7 @@ import { createNamespacedHelpers } from 'vuex'
 import BookItem from "./book-item/BookItem";
 import BookDetails from "./book-details/BookDetails";
 import BuyBookModel from "../../store/models/BuyBookModel";
+import ConfirmModal from "./confirm-modal/ConfirmModal.vue";
 
 const { mapGetters, mapActions } = createNamespacedHelpers('books')
 
@@ -11,7 +12,8 @@ export default {
     name: 'BooksView',
     components: {
         BookItem,
-        BookDetails
+        BookDetails,
+        ConfirmModal
     },
 
     computed: {
@@ -25,7 +27,7 @@ export default {
             maxResults: 10,
             selectedBook: undefined,
             deliveryCosts: undefined,
-            message: ''
+            confirmMessage: undefined
         }
     },
 
@@ -62,14 +64,13 @@ export default {
             $(this.$refs.bookDetailsModalEl).modal('hide')
         },
 
-        showMessageModal(message) {
-            this.message = message
-            $(this.$refs.messageModalEl).modal('show')
+        showMessageModal(confirmMessage) {
+            this.confirmMessage = confirmMessage
+            $(this.$refs.confirmModal.$el).modal('show')
         },
 
         hideMessageModal() {
-            this.message = ''
-            $(this.$refs.messageModalEl).modal('hide')
+            $(this.$refs.confirmModal.$el).modal('hide')
         },
 
         // Handlers
@@ -98,11 +99,7 @@ export default {
                     this.hideBookDetailsModal()
 
                     // Show confirmation
-                    this.showMessageModal(JSON.stringify(res))
-                })
-                .catch(e => {
-                    // Show error
-                    this.showMessageModal('Error while buying book.')
+                    this.showMessageModal(res)
                 })
         }
     }
