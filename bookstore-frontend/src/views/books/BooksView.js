@@ -45,6 +45,9 @@ export default {
             .then(deliveryCosts => {
                 this.deliveryCosts = deliveryCosts
             })
+
+        // Do the default search with an empty query (keyword)
+        this.onSearch()
     },
 
     methods: {
@@ -87,16 +90,20 @@ export default {
 
         onBuyBook({ book, deliveryService}) {
             console.log('deliveryService', this.deliveryService)
-            /*let buyBookModel = new BuyBookModel(deliveryService, this.deliveryCosts[deliveryService])
+            // let buyBookModel = new BuyBookModel(deliveryService, this.deliveryCosts[deliveryService])
+            let buyBookModel = new BuyBookModel('M', this.deliveryCosts['M'])
             this.buyBook(buyBookModel)
                 .then(res => {
                     // Close popup
+                    this.hideBookDetailsModal()
 
                     // Show confirmation
-                    alert(res)
-                })*/
-            this.hideBookDetailsModal()
-            this.showMessageModal('delivery info')
+                    this.showMessageModal(JSON.stringify(res))
+                })
+                .catch(e => {
+                    // Show error
+                    this.showMessageModal('Error while buying book.')
+                })
         }
     }
 }

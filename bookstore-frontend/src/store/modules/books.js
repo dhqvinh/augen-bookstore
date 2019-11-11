@@ -71,35 +71,25 @@ const actions = {
     /**
      * Get delivery costs.
      * @param deliveryService
+     * @return {Promise<T>}
      */
     getDeliveryCosts({ commit }) {
-        return new Promise(resolve => {
-            resolve({
-                M: 5,
-                T: 10,
-                A: 20
+        return axios.get('/api/v1/books/delivery-costs')
+            .then(res => {
+                return res.data
             })
-        })
     },
 
     /**
      * Buy a book and get delivery information.
      * @param buyBookModel
-     * @returns {Promise<T>}
+     * @returns {Promise<BuyBookModel>}
      */
     buyBook({ commit }, buyBookModel) {
-        // return axios.post('/api/v1/books/buy-book', buyBookModel).then(res => {
-        //     return res.data
-        // })
-        return new Promise(resolve => {
-            resolve({
-                deliveryService: 'M',
-                driverName: 'Vinh',
-                mobilePhone: '34124',
-                deliveryDate: '15/11/2019',
-                cost: 10
+        return axios.post('/api/v1/books/buy-book', buyBookModel)
+            .then(res => {
+                return res.data
             })
-        })
     }
 }
 
