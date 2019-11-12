@@ -1,7 +1,7 @@
 # Bookstore Application
 
 ## Getting started
-###1. bookstore-backend
+### 1. bookstore-backend
 + **Technologies:** NodeJS, Express, Babel, ESLint...
 
 + **Requirements:**
@@ -15,7 +15,7 @@ npm start
 ```
 It will start the REST api at http://localhost:8081
 
-###2. bookstore-frontend
+### 2. bookstore-frontend
 + **Technologies:** VueJS, Babel, ESLint, Sass, Bootstrap, Axios...
 
 + **Requirements:**
@@ -48,7 +48,7 @@ The design of the system looks like below
  + **BuyBookModel**
 
 ### 2. Backend
-The backend is developed to provide a REST API to the frontend.
+The backend is developed to provide the REST API to the frontend.
  + **BooksController:** 
    - Endpoint: /api/v1/books
    - Actions: 
